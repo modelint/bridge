@@ -3,17 +3,27 @@ notation Starr
 presentation default
 orientation landscape
 color blue steel
-sheet D
+sheet C
 padding l300 b350
 frame OS Engineer
 frame_presentation default
 nodes
-    Bridgeable Entity Type/2 10,4
-    Bridgeable Entity 8,4
-    Bridgeable Action 8,2
-    Bridge 6,4
-    Join Point 7,5-6
-    Expression 7,5-6
+    Model 8,2-3
+    Bridge 6-7,2
+    Bridgeable Element/2 6-7,5
+    Bridgeable Element Specification/3 6-7,8
+    Bridgeable Operation/2 4-5,8
+    Join Point 4-5,3-4
+    Service Facing Join Point/2 3,2
+    Client Facing Join Point/2 3,5
+    Mapping 2,3-4
+    Expression 3-4,6-7
 connectors
-    +R1 : +/1 b|Bridgeable Entity Type : +/1 t*|Bridgeable Entity
-    +R4 : r|Join Point { l|Client Facing Join Point, l|Service Facing Join Point }
+    -R1 : +/1 r|Bridgeable Element : +/1 l*|Bridgeable Element Specification
+    -R2 : +/1 b|Bridgeable Element Specification : +/2 t*|Bridgeable Operation
+    +R3 : -/1 r|Bridge : -/1 l*|Bridgeable Element, t|Join Point
+    +R4 : b|Join Point { t|Client Facing Join Point, t|Service Facing Join Point }
+    +R5 : -/1 r|Join Point : -/1 l*|Bridgeable Operation, t|Expression
+    +R6 : -/1 r|Service Facing Join Point : -/1 l*|Client Facing Join Point, t|Mapping
+    -R7 : +/1 r|Model : +/1 t|Bridgeable Element
+    -R8.2 : +/1 l-2|Model : +/1 b-2|Model, t|Bridge : L2R-1 L7R+1

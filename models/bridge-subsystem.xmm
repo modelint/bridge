@@ -9,14 +9,9 @@ metadata
     Copyright notice > MIT
     Organization logo > mint
 subsystem Bridge
-class Bridgeable Action, BE
+class Bridge
 attributes
-    Name : Action Name {I}
-    BE spec {I, R2}
---
-class Bridgeable Element Specification, BE_SPEC
-attributes
-    Name : BE Spec Name {I}
+    id : bridge id {i}
 --
 class Bridgeable Element, BE
 attributes
@@ -24,9 +19,14 @@ attributes
     Model {I, R7}
     Spec {R1}
 --
-class Bridge
+class Bridgeable Element Specification, BE_SPEC
 attributes
-    id : bridge id {i}
+    Name : BE Spec Name {I}
+--
+class Bridgeable Operation, BOP
+attributes
+    Name : Action Name {I}
+    BE spec {I, R2}
 --
 class Client Facing Join Point, CFJP
 attributes
@@ -70,7 +70,7 @@ relationships
     is specified by, 1 Bridgeable Entity Specification
 --
     R2
-    is operated on by, Mc Bridgeable Action
+    is operated on by, Mc Bridgeable Operation
     operates on, 1 Bridgeable Entity Type
 --
     R3
@@ -96,4 +96,9 @@ relationships
     R7
     is defined in, 1 Model
     defines, M Bridgeable Entity
+--
+    R8
+    is service to, Mc Model
+    is client to, Mc Model
+    1 Bridge
 --
