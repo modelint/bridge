@@ -1,0 +1,99 @@
+metadata
+    Title : Bridge Subsystem / Bridge Domain
+    Author : Leon Starr
+    Document ID : mint.bride.td.1
+    Version : 0.1.0
+    /// Creation date : July 10, 2022
+    Modification date : July 10, 2022
+    Organization : Model Integration, LLC / www.modelint.com
+    Copyright notice > MIT
+    Organization logo > mint
+subsystem Bridge
+class Bridgeable Action, BE
+attributes
+    Name : Action Name {I}
+    BE spec {I, R2}
+--
+class Bridgeable Element Specification, BE_SPEC
+attributes
+    Name : BE Spec Name {I}
+--
+class Bridgeable Element, BE
+attributes
+    ID : BE ID {I}
+    Model {I, R7}
+    Spec {R1}
+--
+class Bridge
+attributes
+    id : bridge id {i}
+--
+class Client Facing Join Point, CFJP
+attributes
+    Client BE {I, R4}
+    Service BE {I, R4}
+    Marking {I, R4}
+--
+class Expression, EXP
+attributes
+    Action {I, R5}
+    BE spec {I, R5c}
+    Bridge {I, R5}
+    BE {I, R5}
+    Explicit : Boolean
+--
+class Join Point, JP
+attributes
+    Client BE {I, R3}
+    Service BE {I, R3}
+    Marking : Marking Label {I}
+--
+class Mapping
+attributes
+    Client BE {I, R6}
+    Service BE {I, R6}
+    Marking {I, R6}
+--
+class Model
+attributes
+    Name : Model Name {I}
+--
+class Service Facing Join Point, SFJP
+attributes
+    Client BE {I, R4}
+    Service BE {I, R4}
+    Marking {I, R4}
+--
+relationships
+    R1
+    specifies, Mc Bridgeable Entity
+    is specified by, 1 Bridgeable Entity Specification
+--
+    R2
+    is operated on by, Mc Bridgeable Action
+    operates on, 1 Bridgeable Entity Type
+--
+    R3
+    is mapped in, Mc Bridge
+    maps, Mc Bridgeable Entity
+    M Join Point
+--
+    R4
+    Join Point +
+        Client Facing Join Point
+        Service Facing Join Point
+--
+    R5
+    is expressed in, Mc Join Point
+    expresses, Mc Bridgeable Action
+    1 Bridge Action Expression
+--
+    R6
+    represents, Mc Service Facing Join Point
+    is represented by, 1 Client Facing Join Point
+    1 Mapping
+--
+    R7
+    is defined in, 1 Model
+    defines, M Bridgeable Entity
+--

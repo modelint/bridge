@@ -1,0 +1,19 @@
+diagram class
+notation Starr
+presentation default
+orientation landscape
+color blue steel
+sheet D
+padding l300 b350
+frame OS Engineer
+frame_presentation default
+nodes
+    Bridgeable Entity Type/2 10,4
+    Bridgeable Entity 8,4
+    Bridgeable Action 8,2
+    Bridge 6,4
+    Join Point 7,5-6
+    Expression 7,5-6
+connectors
+    +R1 : +/1 b|Bridgeable Entity Type : +/1 t*|Bridgeable Entity
+    +R4 : r|Join Point { l|Client Facing Join Point, l|Service Facing Join Point }
