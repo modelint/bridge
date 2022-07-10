@@ -2,7 +2,7 @@ metadata
     Title : Bridge Subsystem / Bridge Domain
     Author : Leon Starr
     Document ID : mint.bride.td.1
-    Version : 0.1.0
+    Version : 0.2.0
     /// Creation date : July 10, 2022
     Modification date : July 10, 2022
     Organization : Model Integration, LLC / www.modelint.com
@@ -11,13 +11,14 @@ metadata
 subsystem Bridge
 class Bridge
 attributes
-    id : bridge id {i}
+    Client {I, R8}
+    Service {I, R8}
 --
 class Bridgeable Element, BE
 attributes
     ID : BE ID {I}
     Model {I, R7}
-    Spec {R1}
+    BE spec {R1}
 --
 class Bridgeable Element Specification, BE_SPEC
 attributes
@@ -25,34 +26,39 @@ attributes
 --
 class Bridgeable Operation, BOP
 attributes
-    Name : Action Name {I}
+    Name : Operation Name {I}
     BE spec {I, R2}
 --
 class Client Facing Join Point, CFJP
 attributes
-    Client BE {I, R4}
-    Service BE {I, R4}
+    BE {I, R4}
+    Model {I, R4}
+    Service {I, R4}
     Marking {I, R4}
 --
-class Expression, EXP
+class Join Point Operation, JPO
 attributes
-    Action {I, R5}
+    Operation {I, R5}
     BE spec {I, R5c}
-    Bridge {I, R5}
+    Client {I, R5}
+    Service {I, R5}
     BE {I, R5}
-    Explicit : Boolean
+    Expression : Implicit Explicit
 --
 class Join Point, JP
 attributes
-    Client BE {I, R3}
-    Service BE {I, R3}
+    BE {I, R3}
+    Client {I, R3}
+    Service {I, R3}
     Marking : Marking Label {I}
 --
 class Mapping
 attributes
-    Client BE {I, R6}
     Service BE {I, R6}
+    Service {I, R6}
+    Client {I, R6}
     Marking {I, R6}
+    Client BE {R6}
 --
 class Model
 attributes
@@ -60,8 +66,9 @@ attributes
 --
 class Service Facing Join Point, SFJP
 attributes
-    Client BE {I, R4}
-    Service BE {I, R4}
+    BE {I, R4}
+    Model {I, R4}
+    Client {I, R4}
     Marking {I, R4}
 --
 relationships
@@ -86,7 +93,7 @@ relationships
     R5
     is expressed in, Mc Join Point
     expresses, Mc Bridgeable Action
-    1 Bridge Action Expression
+    1 Join Point Operation
 --
     R6
     represents, Mc Service Facing Join Point

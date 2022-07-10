@@ -14,16 +14,16 @@ nodes
     Bridgeable Element Specification/3 6-7,8
     Bridgeable Operation/2 4-5,8
     Join Point 4-5,3-4
-    Service Facing Join Point/2 3,2
-    Client Facing Join Point/2 3,5
+    Client Facing Join Point/2 3,2
+    Service Facing Join Point/2 3,5
     Mapping 2,3-4
-    Expression 3-4,6-7
+    Join Point Operation/2 3-4,6-7
 connectors
     -R1 : +/1 r|Bridgeable Element : +/1 l*|Bridgeable Element Specification
     -R2 : +/1 b|Bridgeable Element Specification : +/2 t*|Bridgeable Operation
     +R3 : -/1 r|Bridge : -/1 l*|Bridgeable Element, t|Join Point
     +R4 : b|Join Point { t|Client Facing Join Point, t|Service Facing Join Point }
-    +R5 : -/1 r|Join Point : -/1 l*|Bridgeable Operation, t|Expression
-    +R6 : -/1 r|Service Facing Join Point : -/1 l*|Client Facing Join Point, t|Mapping
-    -R7 : +/1 r|Model : +/1 t|Bridgeable Element
+    +R5 : -/1 r|Join Point : -/1 l*|Bridgeable Operation, t|Join Point Operation
+    +R6 : -/1 r|Client Facing Join Point : -/1 l*|Service Facing Join Point, t|Mapping
+    +R7.2+2 : +/1 r|Model : +/1 t|Bridgeable Element
     -R8.2 : +/1 l-2|Model : +/1 b-2|Model, t|Bridge : L2R-1 L7R+1
