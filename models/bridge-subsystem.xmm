@@ -2,7 +2,7 @@ metadata
     Title : Bridge Subsystem / Bridge Domain
     Author : Leon Starr
     Document ID : mint.bride.td.1
-    Version : 0.3.0
+    Version : 0.3.1
     /// Creation date : July 10, 2022
     Modification date : July 11, 2022
     Organization : Model Integration, LLC / www.modelint.com
@@ -18,6 +18,7 @@ class Bridgeable Element, BE
 attributes
     ID : BE ID {I}
     Model {I, R7}
+    Name : BE Name
     BE spec {R1}
 --
 class Bridgeable Element Specification, BE_SPEC
