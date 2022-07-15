@@ -1,10 +1,10 @@
 metadata
     Title : Bridge Subsystem / Bridge Domain
     Author : Leon Starr
-    Document ID : mint.bride.td.1
-    Version : 0.3.1
+    Document ID : mint.bridge.td.1
+    Version : 0.4.0
     /// Creation date : July 10, 2022
-    Modification date : July 11, 2022
+    Modification date : July 14, 2022
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
@@ -17,18 +17,7 @@ attributes
 class Bridgeable Element, BE
 attributes
     ID : BE ID {I}
-    Model {I, R7}
-    Name : BE Name
-    BE spec {R1}
---
-class Bridgeable Element Specification, BE_SPEC
-attributes
-    Name : BE Spec Name {I}
---
-class Bridgeable Operation, BOP
-attributes
-    Name : Operation Name {I}
-    BE spec {I, R2}
+    Model {R7}
 --
 class Client Facing Join Point, CFJP
 attributes
@@ -37,21 +26,18 @@ attributes
     Service {I, R4}
     Marking {I, R4}
 --
-class Join Point Operation, JPO
-attributes
-    Operation {I, R5}
-    BE spec {I, R5c}
-    Client {I, R5}
-    Service {I, R5}
-    BE {I, R5}
-    Expression : Implicit Explicit
---
 class Join Point, JP
 attributes
     BE {I, R3}
     Client {I, R3}
     Service {I, R3}
-    Marking : Marking Label {I}
+    Marking {I, R3}
+--
+class Marking
+attributes
+    Name : Mark {I}
+    Client {I, R9}
+    Service {I, R9}
 --
 class Mapping
 attributes
@@ -61,9 +47,32 @@ attributes
     Marking {I, R6}
     CF BE {R6}
 --
+class Metaclass Entity
+attributes
+    Name {I, R10}
+--
+class Metaclass Operation
+attributes
+    Name {I, R10}
+    Operand entity {R2}
+--
+class Metaclass
+attributes
+    Name {I} : Metaclass Name
+--
 class Model
 attributes
     Name : Model Name {I}
+--
+class Model Element
+attributes
+    ID {I, R11}
+    Metaclass entity {R1}
+--
+class Model Operation
+attributes
+    ID {I, R11}
+    Metaclass operation {R5}
 --
 class Service Facing Join Point, SFJP
 attributes
@@ -74,17 +83,17 @@ attributes
 --
 relationships
     R1
-    specifies, Mc Bridgeable Entity
-    is specified by, 1 Bridgeable Entity Specification
+    characterizes, Mc Model Element
+    is an instance of, 1 Metaclass Entity
 --
     R2
     is operated on by, Mc Bridgeable Operation
     operates on, 1 Bridgeable Entity Type
 --
     R3
-    is mapped in, Mc Bridge
-    maps, Mc Bridgeable Entity
-    M Join Point
+    is mapped in, Mc Marking
+    maps, Mc Bridgeable Element
+    1 Join Point
 --
     R4
     Join Point +
@@ -92,21 +101,34 @@ relationships
         Service Facing Join Point
 --
     R5
-    is expressed in, Mc Join Point
-    expresses, Mc Bridgeable Action
-    1 Join Point Operation
+    bridges from model, 1 Metaclass Operation
+    is bridgeable from model as, Mc Model Operation
 --
     R6
-    represents, Mc Service Facing Join Point
     is represented by, 1 Client Facing Join Point
+    represents, Mc Service Facing Join Point
     1 Mapping
 --
     R7
     is defined in, 1 Model
-    defines, M Bridgeable Entity
+    defines, M Bridgeable Element
 --
     R8
     is service to, Mc Model
     is client to, Mc Model
     1 Bridge
+--
+    R9
+    defines counterparts across, 1 Bridge
+    counterparts are defined by, Mc Marking
+--
+    R10
+    Metaclass +
+        Metaclass Entity
+        Metaclass Operation
+--
+    R11
+    Bridgeable Element +
+        Model Element
+        Model Operation
 --
