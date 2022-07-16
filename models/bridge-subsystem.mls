@@ -8,28 +8,30 @@ padding l300 b350
 frame OS Engineer
 frame_presentation default
 nodes
-    Model 8,2-3
-    Bridge 6-7,2
-    Marking 6-7,4-5
-    Bridgeable Element/2 6-7,7-8
-    Model Element 7,9
-    Model Operation 5,9
-    Metaclass 6-7,13
-    Metaclass Entity/2 7,11-12
-    Metaclass Operation/2 5,11-12
-    Join Point 4-5,6-7
-    Client Facing Join Point/2 3,8
-    Service Facing Join Point/2 3,5
-    Mapping 2,6-7
+    Model 5-6,2-3
+    Bridge 8,2
+    Marking 8,9
+    Bridgeable Element/2 3,9
+    Join Point 5-6,7-8
+    Service Facing Join Point/2 7,6
+    Client Facing Join Point/2 4,6
+    Mapping 5-6,5
+    Model Operation 4,10-11
+    Model Element 1-2,10-11
+    Metaclass Operation/2 4,13
+    Metaclass Entity/2 1-2,13
+    Metaclass 2-3,14-15
 connectors
     -R1 : +/1 r|Model Element : +/1 l*|Metaclass Entity
-    -R2 : +/1 b|Metaclass Entity : +/2 t*|Metaclass Operation
-    +R3 : -/1 r|Marking : -/1 l*|Bridgeable Element, t|Join Point
-    +R4 : b|Join Point { t|Client Facing Join Point, t|Service Facing Join Point }
+    -R2 : +/1 t|Metaclass Entity : +/2 b*|Metaclass Operation
+    +R3 : -/1 b|Marking : -/1 t*|Bridgeable Element, r|Join Point
+    +R4 : l|Join Point { r|Client Facing Join Point, r|Service Facing Join Point }
     +R5 : -/2 r|Model Operation : -/2 l*|Metaclass Operation
-    +R6 : -/1 r|Service Facing Join Point : -/1 l*|Client Facing Join Point, t|Mapping
-    +R7.2+2 : +/1 r|Model : +/1 t|Bridgeable Element
-    -R8.2 : +/1 l-2|Model : +/1 b-2|Model, t|Bridge : L2R-1 L7R+1
-    +R9 : -/2 r|Bridge : -/2 l*|Marking
+    +R6 : -/1 b|Service Facing Join Point : -/1 t*|Client Facing Join Point, r|Mapping
+    -R7.2 : -/1 b|Model : +/1 l|Bridgeable Element
+    -R8.2 : -/1 l+2|Model : +/1 t-2|Model, b|Bridge : L2R-2 L6R+2
+    +R9 : +/2 r|Bridge : +/2 l*|Marking
     +R10 : l|Metaclass { r|Metaclass Entity, r|Metaclass Operation }
     +R11 : r|Bridgeable Element { l|Model Element, l|Model Operation }
+    +R12.2 : +/1 t+2|Model : -/1 l|Service Facing Join Point
+    -R13.2 : +/1 b+2|Model : -/1 l|Client Facing Join Point

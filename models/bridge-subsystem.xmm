@@ -2,9 +2,9 @@ metadata
     Title : Bridge Subsystem / Bridge Domain
     Author : Leon Starr
     Document ID : mint.bridge.td.1
-    Version : 0.4.0
+    Version : 0.5.0
     /// Creation date : July 10, 2022
-    Modification date : July 14, 2022
+    Modification date : July 15, 2022
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
@@ -17,27 +17,26 @@ attributes
 class Bridgeable Element, BE
 attributes
     ID : BE ID {I}
-    Model {R7}
+    Model {I, R7}
 --
 class Client Facing Join Point, CFJP
 attributes
     BE {I, R4}
     Model {I, R4}
-    Service {I, R4}
     Marking {I, R4}
+    Service {R13}
 --
 class Join Point, JP
 attributes
     BE {I, R3}
-    Client {I, R3}
-    Service {I, R3}
+    Model {I, R3}
     Marking {I, R3}
 --
 class Marking
 attributes
     Name : Mark {I}
-    Client {I, R9}
-    Service {I, R9}
+    Client {R9}
+    Service {R9}
 --
 class Mapping
 attributes
@@ -78,8 +77,8 @@ class Service Facing Join Point, SFJP
 attributes
     BE {I, R4}
     Model {I, R4}
-    Client {I, R4}
     Marking {I, R4}
+    Client {R12}
 --
 relationships
     R1
@@ -131,4 +130,12 @@ relationships
     Bridgeable Element +
         Model Element
         Model Operation
+--
+    R12
+    fans in from, 1 Model
+    fans out via, Mc Service Facing Join Point
+--
+    R13
+    fans into, 1 Model
+    fans in via, Mc Client Facing Join Point
 --
