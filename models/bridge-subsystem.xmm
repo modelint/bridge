@@ -2,7 +2,7 @@ metadata
     Title : Bridge Subsystem / Bridge Domain
     Author : Leon Starr
     Document ID : mint.bridge.td.1
-    Version : 0.7.1
+    Version : 0.8.0
     /// Creation date : July 10, 2022
     Modification date : July 24, 2022
     Organization : Model Integration, LLC / www.modelint.com
@@ -40,8 +40,8 @@ attributes
 class Mapping
 attributes
     SF BE {I, R6}
-    Service {I, R6, R12}
-    Client {I, R6, R12}
+    Service {I, R6}
+    Client {I, R6}
     Marking {I, R6c}
     CF BE {R6}
 --
@@ -135,8 +135,4 @@ relationships
     Bridgeable Element +
         Model Element
         Model Operation
---
-    R12
-    spans, 1 Bridge
-    is span of, Mc Mapping
 --

@@ -3,13 +3,13 @@ notation Starr
 presentation default
 orientation landscape
 color blue steel
-sheet D
-padding l300 b350
+sheet C
+padding b350
 frame OS Engineer
 frame_presentation default
 nodes
-    Model 5-6,2-3
-    Bridge 8,2
+    Model 5-6,3-4
+    Bridge 8,3
     Marking 8,9
     Bridgeable Element/2 3,9
     Join Point 5-6,7-8
@@ -21,7 +21,7 @@ nodes
     Metaclass Operation/2 4,13
     Metaclass Entity/2 1-2,13
     Metaclass 2-3,14-15
-    System 4,1
+    System 4,2
 connectors
     -R1 : +/1 r|Model Element : +/1 l*|Metaclass Entity
     -R2 : +/1 t|Metaclass Entity : +/2 b*|Metaclass Operation
@@ -30,8 +30,7 @@ connectors
     +R5 : -/2 r|Model Operation : -/2 l*|Metaclass Operation
     +R6 : -/1 b|Service Facing Join Point : -/1 t*|Client Facing Join Point, r|Mapping
     -R7.2 : -/1 b|Model : +/1 l|Bridgeable Element
-    -R8.2 : -/1 l+2|Model : +/1 t-2|Model, b|Bridge : L2R-2 L6R+2
+    -R8.2 : -/1 l+2|Model : +/1 t-2|Model, b|Bridge : L3R-2 L6R+2
     +R9 : +/2 r+1|Bridge : +/2 l*|Marking
     +R10 : l|Metaclass { r|Metaclass Entity, r|Metaclass Operation }
     +R11 : r|Bridgeable Element { l|Model Element, l|Model Operation }
-    +R12 : +/1 r-2|Bridge : -/1 t|Mapping
