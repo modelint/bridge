@@ -31,6 +31,6 @@ connectors
     +R6 : -/1 b|Service Facing Join Point : -/1 t*|Client Facing Join Point, r|Mapping
     -R7.2 : -/1 b|Model : +/1 l|Bridgeable Element
     -R8.2 : -/1 l+2|Model : +/1 t-2|Model, b|Bridge : L3R-2 L6R+2
-    +R9 : +/2 r+1|Bridge : +/2 l*|Marking
+    +R9 : +/2 r|Bridge : +/2 l*|Marking
     +R10 : l|Metaclass { r|Metaclass Entity, r|Metaclass Operation }
     +R11 : r|Bridgeable Element { l|Model Element, l|Model Operation }
