@@ -2,9 +2,9 @@ metadata
     Title : Bridge Subsystem / Bridge Domain
     Author : Leon Starr
     Document ID : mint.bridge.td.1
-    Version : 0.8.0
+    Version : 0.8.1
     /// Creation date : July 10, 2022
-    Modification date : July 24, 2022
+    Modification date : July 25, 2022
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
@@ -124,7 +124,7 @@ relationships
 --
     R9
     defines counterparts across, 1 Bridge
-    counterparts are defined by, Mc Marking
+    counterparts are defined by, M Marking
 --
     R10
     Metaclass +
