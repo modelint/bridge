@@ -2,9 +2,9 @@ metadata
     Title : Bridge Subsystem / Bridge Domain
     Author : Leon Starr
     Document ID : mint.bridge.td.1
-    Version : 0.8.1
+    Version : 0.8.2
     /// Creation date : July 10, 2022
-    Modification date : July 25, 2022
+    Modification date : July 30, 2022
     Organization : Model Integration, LLC / www.modelint.com
     Copyright notice > MIT
     Organization logo > mint
@@ -110,7 +110,7 @@ relationships
 --
     R6
     is represented by, 1 Client Facing Join Point
-    represents, Mc Service Facing Join Point
+    represents, M Service Facing Join Point
     1 Mapping
 --
     R7
