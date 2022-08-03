@@ -16,21 +16,22 @@ nodes
     Service Facing Join Point/2 7,6
     Client Facing Join Point/2 4,6
     Mapping 5-6,5
-    Model Operation 4,10-11
-    Model Element 1-2,10-11
-    Metaclass Operation/2 4,13
-    Metaclass Entity/2 1-2,13
+    Verb Element 4,10-11
+    Noun Element 1-2,10-11
+    Verb/2 4,13
+    Noun/2 1-2,13
     Metaclass 2-3,14-15
+    Metaclass Operation/2 3,12 >right
     System 4,2
 connectors
-    -R1 : +/1 r|Model Element : +/1 l*|Metaclass Entity
-    -R2 : +/1 t|Metaclass Entity : +/2 b*|Metaclass Operation
+    -R1 : +/1 r|Noun Element : +/1 l*|Noun
+    -R2 : +/1 t|Noun : +/2 b*|Verb, r|Metaclass Operation
     +R3 : -/1 b|Marking : -/1 t*|Bridgeable Element, r|Join Point
     +R4 : l|Join Point { r|Client Facing Join Point, r|Service Facing Join Point }
-    +R5 : -/2 r|Model Operation : -/2 l*|Metaclass Operation
+    +R5 : -/2 r|Verb Element : -/2 l*|Verb
     +R6 : -/1 b|Service Facing Join Point : -/1 t*|Client Facing Join Point, r|Mapping
     -R7.2 : -/1 b|Model : +/1 l|Bridgeable Element
     -R8.2 : -/1 l+2|Model : +/1 t-2|Model, b|Bridge : L3R-2 L6R+2
     +R9 : +/2 r|Bridge : +/2 l*|Marking
-    +R10 : l|Metaclass { r|Metaclass Entity, r|Metaclass Operation }
-    +R11 : r|Bridgeable Element { l|Model Element, l|Model Operation }
+    +R10 : l|Metaclass { r|Noun, r|Verb }
+    +R11 : r|Bridgeable Element { l|Noun Element, l|Verb Element }

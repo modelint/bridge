@@ -2,7 +2,7 @@ metadata
     Title : Bridge Specification Domain
     Author : Leon Starr
     Document ID : mint.bridge.td.1
-    Version : 0.8.3
+    Version : 0.9.0
     /// Creation date : July 10, 2022
     Modification date : August 3, 2022
     Organization : Model Integration, LLC / www.modelint.com
@@ -45,35 +45,39 @@ attributes
     Marking {I, R6c}
     CF BE {R6}
 --
-class Metaclass Entity
+class Noun
 attributes
     Name {I, R10}
 --
-class Metaclass Operation
+class Verb
 attributes
     Name {I, R10}
-    Operand entity {R2}
 --
 class Metaclass
 attributes
     Name {I} : Metaclass Name
 --
+class Metaclass Operation
+attributes
+    Noun {I, R2}
+    Verb {I, R2}
+--
 class Model
 attributes
     Name : Model Name {I}
 --
-class Model Element
+class Noun Element
 attributes
     ID {I, R11}
     Model {I, R11}
     Metaclass entity {R1}
     Description : Element Description
 --
-class Model Operation
+class Verb Element
 attributes
     ID {I, R11}
     Model {I, R11}
-    Metaclass operation {R5}
+    Verb {R5}
 --
 class Service Facing Join Point, SFJP
 attributes
@@ -87,12 +91,13 @@ attributes
 --
 relationships
     R1
-    characterizes, Mc Model Element
-    is an instance of, 1 Metaclass Entity
+    characterizes, Mc Noun Element
+    is an instance of, 1 Noun
 --
     R2
-    is operated on by, Mc Bridgeable Operation
-    operates on, 1 Bridgeable Entity Type
+    is operated on by, Mc Verb
+    operates on, M Noun
+    1 Metaclass Operation
 --
     R3
     is mapped in, Mc Marking
@@ -105,8 +110,8 @@ relationships
         Service Facing Join Point
 --
     R5
-    bridges from model, 1 Metaclass Operation
-    is bridgeable from model as, Mc Model Operation
+    bridges from model, 1 Verb
+    is bridgeable from model as, Mc Verb Element
 --
     R6
     is represented by, 1 Client Facing Join Point
@@ -128,11 +133,11 @@ relationships
 --
     R10
     Metaclass +
-        Metaclass Entity
-        Metaclass Operation
+        Noun
+        Verb
 --
     R11
     Bridgeable Element +
-        Model Element
-        Model Operation
+        Noun Element
+        Verb Element
 --
